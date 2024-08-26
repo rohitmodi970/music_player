@@ -21,7 +21,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder
-    let a = await fetch(`http://127.0.0.1:3000/PROJECT2%20-SPOTIFY%20CLONE/${folder}/`);
+    let a = await fetch(`/${folder}/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -86,7 +86,7 @@ const playMusic = (track, pause = false) => {
 };
 
 async function displayAlbum() {
-    let a = await fetch(`http://127.0.0.1:3000/PROJECT2%20-SPOTIFY%20CLONE/folder/`);
+    let a = await fetch(`/folder/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -102,7 +102,7 @@ async function displayAlbum() {
             let fold = e.href.split("/").slice(-2)[0];
             
             // Get the metadata of the folder
-            let metadata = await fetch(`http://127.0.0.1:3000/PROJECT2%20-SPOTIFY%20CLONE/folder/${fold}/info.json`);
+            let metadata = await fetch(`E/folder/${fold}/info.json`);
             let response = await metadata.json();
 
             // Create the card HTML
@@ -113,7 +113,7 @@ async function displayAlbum() {
                             <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <img src="http://127.0.0.1:3000/PROJECT2%20-SPOTIFY%20CLONE/folder/${fold}/cover.jpeg" alt="">
+                    <img src="/folder/${fold}/cover.jpeg" alt="">
                     <h2>${response.title}</h2>
                     <p>${response.description}</p>
                 </div>`;
