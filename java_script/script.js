@@ -214,21 +214,21 @@ async function main() {
             }
         });
 
-    //add event listener too mute the track
-    document.querySelector(".volume > img").addEventListener("click",e=>{
-        // console.log(e.target)
-        if (e.target.src.includes("volume.svg")) {
-            e.target.src= e.target.src.replace("volume.svg","mute.svg")
-            document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
-            currentSong.volume = 0;
-            
-        }
-        else{
-            e.target.src= e.target.src.replace("mute.svg","volume.svg")
-            currentSong.volume = 1;
-            document.querySelector(".range").getElementsByTagName("input")[0].value = 50
-        }
-    })
-
+        //add event listener to mute the track
+        document.querySelector(".volume > img").addEventListener("click", e => {
+            if (e.target.src.includes("volume.svg")) {
+                e.target.src = e.target.src.replace("volume.svg", "mute.svg");
+                document.querySelector(".range input").value = 0;
+                currentSong.volume = 0;
+            } else {
+                e.target.src = e.target.src.replace("mute.svg", "volume.svg");
+                currentSong.volume = 1;
+                document.querySelector(".range input").value = 50;
+            }
+        });
+    } catch (error) {
+        console.error("Error in main function:", error);
+    }
 }
-main() 
+
+main();
